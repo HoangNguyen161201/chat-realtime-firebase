@@ -28,27 +28,38 @@ export default function AddUser() {
     }, [userNotInRoom])
 
     const addUsers =async ()=> {
-        setLoading.toggle()
+        if (valueSelect){
 
-        
-        const data = []
-        valueSelect.map(value=> {
-            data.push(value.value)
-        })
-        
-        await findAndUpdate('rooms', roomSelect.room, data)
-
-        toast({
-            description: 'Add users success',
-            status: "success",
-            duration: "9000",
-            isClosable: true,
-            position: "top-right"
-        })
-
-        setValue(null)
-        onClose()
-        setLoading.toggle()
+            setLoading.toggle()
+            
+            const data = []
+            valueSelect.map(value=> {
+                data.push(value.value)
+            })
+            
+            await findAndUpdate('rooms', roomSelect.room, data)
+    
+            toast({
+                description: 'Add users success',
+                status: "success",
+                duration: "9000",
+                isClosable: true,
+                position: "top-right"
+            })
+    
+            setValue(null)
+            onClose()
+            setLoading.toggle()
+        }
+        else {
+            toast({
+                status: 'error',
+                duration: '9000',
+                description: 'Select member to chat',
+                position: 'top-right',
+                isClosable: true
+            })
+        }
     }
 
     return (

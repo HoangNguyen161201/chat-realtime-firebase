@@ -24,7 +24,6 @@ export default function Chat() {
     const [nameRoom, setNameRom]= useState(null)
 
     useEffect(()=> {
-        console.log('huy', room)
         if(room){
             const r = getdata('rooms', room)
             r.then(e=> {
@@ -33,7 +32,7 @@ export default function Chat() {
         }
     }, [room])
 
-    useEffect(async ()=>{
+    useEffect(()=>{
         if(room){
             const value = getdata('rooms', room)
             value.then(e=> {

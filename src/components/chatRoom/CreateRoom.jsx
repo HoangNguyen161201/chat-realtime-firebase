@@ -10,27 +10,34 @@ export default function CreateRoom() {
     const {isOpen, onOpen, onClose} = useDisclosure()
     const [name, setName] = useState('')
     const [discription, setDiscription] = useState('')
+    const [isError, setError] = useState(false)
     
     const {UserReducer: {user}} = useContext(ThemeContext)
     const createRoom = async ()=> {
-        const data = {
-            name,
-            discription,
-            members: [user.data.uid]
+        if (name){
+
+            const data = {
+                name,
+                discription,
+                members: [user.data.uid]
+            }
+    
+            await addDocument('rooms', data)
+            onClose()
+    
+            // alert thong  bao
+            toast({
+                position: "top-right",
+                description: 'create room success',
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+                
+            })
         }
-
-        await addDocument('rooms', data)
-        onClose()
-
-        // alert thong  bao
-        toast({
-            position: "top-right",
-            description: 'create room success',
-            status: 'success',
-            duration: 5000,
-            isClosable: true,
-            
-        })
+        else{
+            setError(true)
+        }
     }
 
     return (
@@ -46,8 +53,9 @@ export default function CreateRoom() {
                         <ModalBody>
                             <FormControl isRequired>
                                 <FormLabel fontWeight="400">Rome name</FormLabel>
-                                <Input onChange={(e)=> {
+                                <Input isInvalid={isError} onChange={(e)=> {
                                     setName(e.target.value)
+                                    setError(false)
                                 }} placeholder="Enter room name" />
                             </FormControl>
                             <FormControl mt={5} >
