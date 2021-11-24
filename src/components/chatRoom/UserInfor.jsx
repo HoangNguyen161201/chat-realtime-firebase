@@ -24,7 +24,6 @@ export default function UserInfor() {
                             ...doc.data(),
                             id: doc.id  
                         }))
-            console.log(data)
         })
     }, [])
 

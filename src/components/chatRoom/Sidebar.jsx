@@ -25,7 +25,7 @@ export default function sideBar() {
     return (
         <>
             <Music/>
-            <Accordion allowToggle mt={5}>
+            <Accordion allowToggle mt="15px">
                 <AccordionItem isFocusable borderWidth="0">
                     <AccordionButton as={Button} colorScheme="blue" _hover={{
                         bg: "blue.600"

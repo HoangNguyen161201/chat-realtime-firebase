@@ -1,6 +1,7 @@
 import {ThemeContext} from './index'
-import {createContext, useContext, useMemo, useState} from 'react'
+import {createContext, useCallback, useContext, useMemo, useState} from 'react'
 import useFirestore from '../hooks/useFirrestore'
+import { getdata } from '../firebase/services'
 
 export const AppContext = createContext()
  
@@ -17,7 +18,6 @@ export default function AppProvider({children}) {
     }), [idUser])
 
     const data = useFirestore('rooms', condition)
-
     
     // get all users in this room
 
@@ -68,8 +68,6 @@ export default function AppProvider({children}) {
             dataUsers.map(e=> {
                 idUsers.push(e.uid)
             })
-    
-            console.log('ddfd',dataUsers)
     
             return {
                 field: 'uid',

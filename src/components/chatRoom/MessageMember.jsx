@@ -1,6 +1,7 @@
 import {useColorModeValue, VStack, HStack, Text, Avatar, Tag} from '@chakra-ui/react'
 import { useContext } from 'react'
 import { AppContext } from '../../context/AppProvider'
+import {formatDistance} from 'date-fns'
 
 export default function MessageMember({message}) {
     const bgMessage = useColorModeValue('blue.100', null)
@@ -12,12 +13,16 @@ export default function MessageMember({message}) {
         return value.uid === message.idUser
     })
 
+    const time =  message.createAt ? new Date(message.createAt.seconds* 1000) : Date.now()
+
     return (
         <VStack mb={10} spacing={4} alignItems="end">
             <HStack spacing={4}>
                 <VStack alignItems="end">
                     <Text>{user?.displayName}</Text>
-                    <Tag color="gray">11: 00 PM</Tag>
+                    <Tag color="gray">{
+                        formatDistance(Date.now(), time,{ addSuffix: true })
+                    }</Tag>
                 </VStack>
                 <Avatar size='md' src={user?.photoURL} name={user?.displayName} />
 
@@ -30,7 +35,7 @@ export default function MessageMember({message}) {
                 position: 'absolute',
                 top: -1,
                 right: 3,
-                bg: { bgMessage },
+                bg: `${ bgMessage }`,
                 transform: "rotate(45deg)"
             }} p={5} borderRadius="5px" maxWidth="600px">
                 {message.message}

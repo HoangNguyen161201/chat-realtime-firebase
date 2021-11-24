@@ -37,7 +37,7 @@ function MessageAdmin({message}) {
                 position: 'absolute',
                 top: -1,
                 left: 3,
-                bg: { bgMessageAdmin },
+                bg: `${ bgMessageAdmin }`,
                 transform: "rotate(45deg)"
             }} p={5} borderRadius="5px" maxWidth="600px">
                 {message.message}

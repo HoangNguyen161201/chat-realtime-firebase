@@ -11,14 +11,11 @@ import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 
 import ReactLoading from 'react-loading'
-import { AppContext } from "../context/AppProvider";
 
 export default function Login() {
     const navigate = useNavigate()
 
     const { UserReducer } = useContext(ThemeContext)
-    const {dataMessage} = useContext(AppContext)
-    console.log(dataMessage)
 
     const setUser = (user) => {
         const data = {
@@ -90,7 +87,7 @@ export default function Login() {
             setUser(result.user)
             navigate('/')
         }).catch(error => {
-            setBoolean.off()
+            setBooleanFb.off()
         })
 
     }

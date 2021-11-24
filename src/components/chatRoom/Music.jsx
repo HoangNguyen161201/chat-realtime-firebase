@@ -11,11 +11,9 @@ export default function Music() {
         () => {
             const elementMusic = document.getElementById('audio')
             if (elementMusic.paused){
-                console.log('sdsd')
                 setMusicState(true)
                 elementMusic.play()
             } else {
-                console.log('hoang')
 
                 setMusicState(false)
                 elementMusic.pause()
