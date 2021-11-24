@@ -1,0 +1,22 @@
+.music {
+    animation: scale 1s linear infinite
+}
+
+@keyframes scale {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(10);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+.musicPause {
+    opacity: 0!important;
+}
