@@ -1,6 +1,6 @@
 # Chat realtime with firebase:
 
-### This project supports login with google and Facebook, create UI with chakra UI and work database with firebase. Here are the main features of the project:
+### This project create by reactjs, create UI with chakra UI and work database with firebase. Here are the main features of the project:
 
 * Real-time chat.
 * Create rooms.
